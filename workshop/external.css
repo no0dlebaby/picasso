@@ -6,7 +6,6 @@ body {
 }
 
 * {
-    /* Sets the calculations for the box to include the borders */
     box-sizing: border-box;
 }
 
@@ -20,8 +19,6 @@ body {
     display: flex;
     justify-content: space-between;
     gap: 2%;
-
-    /* allows circles to be placed anywhere relative to this section */
     position: relative;
     height: fit-content;
 }
@@ -31,11 +28,6 @@ body {
     min-width: 150px;
     background-color: #02989D;
     margin-bottom: 1%;
-
-    /* this shorthand means the box will grow and shrink with the screen at the same rate as the other boxes. it will try to maintain the 31.5% of the screen
-        Why 32? three boxes would be roughly 33.33% and i am maintaining two 2% gap between the three boxes. 
-        32% * 3 = 96% + (2% * 2) = 100%
-    */
     flex: 1 1 32%;
 }
 
@@ -92,7 +84,7 @@ body {
 #circle-5 {
     bottom: -3rem;
     left: calc(33% - 3rem);
-    z-index: 1; /* brings it forward */
+    z-index: 1; 
 }
 
 #circle-6 {
@@ -128,7 +120,6 @@ body {
 }
 
 svg {
-    /* Height will adjust the scaling size of our SVG */
     height: 150px;
     color: rgb(111, 226, 227)
 }
@@ -139,7 +130,7 @@ svg:nth-child(n+7) {
 
 .people {
     position: absolute;
-    z-index: 1; /* we want this to be explicitly above the triangles */
+    z-index: 1; 
     display: flex;
     bottom: -4%;
 }
@@ -153,50 +144,20 @@ footer {
     background-color: #cee077;
 }
 
-/* media queries */
 
-
-/* First level of adjustment.  Tablet size starts usually around 768px */
 
 @media (max-width: 1050px) {
 
-    /* 
-        Looks like the Triangles are WAY to large when the screen gets smaller
-        So as the page shrinks, the triangles should also adjust too
-    */
-    .small-triangle,
-    .large-triangle {
-        /*
-        You could adjust each side of the border to tweak it perfectly, but in anticipation
-        of this, REM was the unit used.  REM is based on the font-size of the html page.
-        
-        So instead of adjusting all the following, a simple adjustment to font-size will scale
-        all of these values down - while maintaining the same ratio
-
-        border-left: 10rem solid transparent;
-        border-right: 10rem solid transparent;
-        border-bottom: 20rem solid #cee077; 
-        */
-    }
-
     html {
         font-size: 10px;
-        /* Shrink the size here for the whole page instead of individually */
     }
-
-    /* This also adjusts the size of the circles (makes them smaller) */
-    /* The SVG images are not scalled to REM so lets see how they would be altered */
 
     svg {
         height: 100px;
-        /* down from 150 to 100 */
     }
 
 }
 
-/* At around 580 width, with how the flexbox in this project was set up, the three layout moves
-to have two boxes above and one below.  Media queries should account for this.  Additionally, the people
-are reaching the end of the page, so they should be scaled down again */
 
 @media (max-width: 768px) {
 
@@ -218,7 +179,7 @@ are reaching the end of the page, so they should be scaled down again */
     }
 
     .people {
-        bottom: -2%;
+        height: 150px;
     }
 }
 
